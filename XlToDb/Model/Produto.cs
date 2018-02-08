@@ -76,10 +76,14 @@ namespace XlToDb.Model
 
         public virtual TipoProducao TipoProd { get; set; }
 
-        [Display(Name = "PCP")]
+        [Display(Name = "PCP")]             // Removido por Marcelo em Janeiro -2018. Mantido para uso eventual
         public int PcpId { get; set; }
 
         public Pcp Pcp { get; set; }
+
+        [StringLength(16)]
+        [Display(Name = "Ref Auxiliar Produto")]
+        public string RefAuxiliarProduto { get; set; }
 
         [Display(Name = "Qt Un por Un Armz")]
         public int QtUnPorUnArmz { get; set; }
@@ -92,31 +96,31 @@ namespace XlToDb.Model
         public int ItemStru { get; set; }
 
         [Display(Name = "Custo Direto Total")]
-        [DisplayFormat(DataFormatString = "{0:N3}")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public float CustODirTotal { get; set; }
 
         [Display(Name = "Custo Mat última etapa")]
-        [DisplayFormat(DataFormatString = "{0:N3}")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public float CstMatUltmEtapa { get; set; }
 
         [Display(Name = "Custo Mat etapa 1")]
-        [DisplayFormat(DataFormatString = "{0:N3}")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public float CstMatEtapa1 { get; set; }
 
         [Display(Name = "Custo Mat etapa 2")]
-        [DisplayFormat(DataFormatString = "{0:N3}")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public float CstMatEtapa2 { get; set; }
 
         [Display(Name = "Custo Mat etapa 3")]
-        [DisplayFormat(DataFormatString = "{0:N3}")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public float CstMatEtapa3 { get; set; }
 
         [Display(Name = "Custo Tot Materiais")]
-        [DisplayFormat(DataFormatString = "{0:N3}")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public float CstTotMaterial { get; set; }
 
         [Display(Name = "Custo Direto MOD")]
-        [DisplayFormat(DataFormatString = "{0:N3}")]
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public float CustoDirMod { get; set; }
 
         [Display(Name = "Horas MOD última etapa")]
@@ -166,6 +170,10 @@ namespace XlToDb.Model
         [Display(Name = "% mats etapa preced 3")]
         [DisplayFormat(DataFormatString = "{0:P0}")]
         public float PctMatEtapa3 { get; set; }
+
+        [Display(Name = "Descrição + Unidade")]
+        [StringLength(128)]
+        public string DescricaoUnidade { get; set; }
 
         public virtual ICollection<Estrutura> Estrutura { get; set; }
 

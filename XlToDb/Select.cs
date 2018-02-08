@@ -11,7 +11,7 @@ namespace XlToDb
             var comp = celula.ToLower();
 
             if (comp == "cx" || comp == "caixa") return 1;
-            if (comp == "pc" || comp == "pç" || comp == "peça" || comp == "peca") return 2;
+            if (comp == "pc" || comp == "pç" || comp == "peça" || comp == "peca" || comp == "pc ") return 2;
             if (comp == "kg" || comp == "kilograma" || comp == "kilo") return 3;
             if (comp == "m" || comp == "mt" || comp == "metro") return 4;
             if (comp == "rl" || comp == "rolo") return 5;
@@ -25,6 +25,7 @@ namespace XlToDb
 
         public static int Tipo(string celula)
         {
+            celula = $"{celula} ";
             var comp = celula.Substring(0, 1).ToLower();
 
             if (comp == "a") return 1;
@@ -35,6 +36,7 @@ namespace XlToDb
 
         public static int ClasseCusto(string celula)
         {
+            celula = $"{celula}  ";
             var comp = celula.Substring(0, 2);
 
             if (comp == "00") return 1;
@@ -50,6 +52,7 @@ namespace XlToDb
 
         public static int Categoria(string celula)
         {
+            celula = $"{celula}  ";
             var db = new EntityContext();
             var comp = celula.Substring(0, 2);
 
@@ -60,6 +63,7 @@ namespace XlToDb
 
         public static int Familia(string celula)
         {
+            celula = $"{celula}   ";
             var comp = celula.Substring(0, 3);
             var db = new EntityContext();
 
@@ -71,6 +75,7 @@ namespace XlToDb
 
         public static int Linha(string celula)
         {
+            celula = $"{celula}    ";
             var db = new EntityContext();
             var comp = celula.Substring(0, 4);
 
@@ -178,7 +183,7 @@ namespace XlToDb
         {
             var db = new EntityContext();
             var resposta = db.Produtos.FirstOrDefault(p => p.Apelido == celula);
-            if (resposta == null) return 16895;
+            if (resposta == null) return 20830;
             return resposta.Id;
         }
 

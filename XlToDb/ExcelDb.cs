@@ -13,7 +13,6 @@ namespace XlToDb
         {
             var db = new EntityContext();
 
-
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Produtos);
             Excel._Worksheet worksheet = workbook.Sheets[3];
@@ -72,11 +71,12 @@ namespace XlToDb
                     data.TipoProdId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
                         ? Select.TipoProducao(range.Cells[i, j].Value2.ToString())
                         : 3;
-                    data.PcpId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? Select.Pcp(range.Cells[i, j].Value2.ToString())
-                        : 1;
-                    data.QtUnPorUnArmz = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0 ;
+                    data.RefAuxiliarProduto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                        ? range.Cells[i, j].Value2.ToString()
+                        : "--";
+                    data.QtUnPorUnArmz = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
                     data.MedidaFitaId = 32;
+                    data.PcpId = 3;
 
                     db.Produtos.Add(data);
                     db.SaveChanges();
@@ -141,14 +141,14 @@ namespace XlToDb
             Excel.Range range = worksheet.UsedRange;
 
             
-                for (int i = 2; i < range.Rows.Count + 1; i++)
+                for (int i = 2; i < 4826; i++)
                 {
 
                     var data = new Estrutura();
 
                     data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null
                         ? Select.Produto(range.Cells[i, 1].Value2.ToString())
-                        : 16895;
+                        : 20830;
                     data.UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null
                         ? Select.Unidade(range.Cells[i, 3].Value2.ToString())
                         : 8;
@@ -176,8 +176,17 @@ namespace XlToDb
                     data.Observacao = range.Cells[i, 13] != null && range.Cells[i, 13].Value2 != null
                         ? range.Cells[i, 13].Value2.ToString()
                         : "--";
+                    data.CategoriaId = range.Cells[i, 21] != null && range.Cells[i, 21].Value2 != null
+                        ? Select.Categoria(range.Cells[i, 21].Value2.ToString())
+                        : 12;
+                    data.FamiliaId = range.Cells[i, 22] != null && range.Cells[i, 22].Value2 != null
+                        ? Select.Familia(range.Cells[i, 22].Value2.ToString())
+                        : 15;
+                    data.LinhaId = range.Cells[i, 23] != null && range.Cells[i, 23].Value2 != null
+                        ? Select.Linha(range.Cells[i, 23].Value2.ToString())
+                        : 15;
 
-                    db.Estruturas.Add(data);
+                db.Estruturas.Add(data);
                     db.SaveChanges();
                     Console.WriteLine(i);
                 }
@@ -1353,6 +1362,28 @@ namespace XlToDb
             //    db.SaveChanges();
             //    Console.WriteLine(i);
             //}
+        }
+
+        public void SetProductUnity()
+        {
+            var db = new EntityContext();
+            var produtos = db.Produtos;
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Produtos);
+            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 2; i < 1032; i++)
+            {
+                int codigo = int.Parse(range.Cells[i, 1].Value2.ToString());
+                var produto = produtos.Find(codigo);
+                produto.UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null
+                        ? Select.Unidade(range.Cells[i, 3].Value2.ToString())
+                        : 8;
+                Console.WriteLine(i);
+            }
+
+            db.SaveChanges();
         }
     }
 }
