@@ -18,67 +18,85 @@ namespace XlToDb
             Excel._Worksheet worksheet = workbook.Sheets[3];
             Excel.Range range = worksheet.UsedRange;
 
-                for (int i = 2; i <= range.Rows.Count + 1; i++)
+                for (int i = 2; i <= 1032; i++)
                 {
                     var data = new Produto();
 
                     int j = 1;
 
-                    data.Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null
-                        ? range.Cells[i, 1].Value2.ToString()
-                        : "999999";
-                    data.Descricao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? range.Cells[i, j].Value2.ToString()
-                        : "--";
-                    data.UnidadeId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? Select.Unidade(range.Cells[i, j].Value2.ToString())
-                        : 8;
-                    data.TipoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? Select.Tipo(range.Cells[i, j].Value2.ToString())
-                        : 4;
-                    data.ClasseCustoId =
-                        range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                            ? Select.ClasseCusto(range.Cells[i, j].Value2.ToString())
-                            : 9;
-                    data.CategoriaId =
-                        range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                            ? Select.Categoria(range.Cells[i, j].Value2.ToString())
-                            : 12;
-                    data.FamiliaId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? Select.Familia(range.Cells[i, j].Value2.ToString())
-                        : 15;
-                    data.LinhaId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? Select.Linha(range.Cells[i, j].Value2.ToString())
+                data.Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null
+                    ? range.Cells[i, 1].Value2.ToString()
+                    : "999999";
+                data.Descricao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? range.Cells[i, j].Value2.ToString()
+                    : "--";
+                data.UnidadeId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? Select.Unidade(range.Cells[i, j].Value2.ToString())
+                    : 8;
+                data.TipoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? Select.Tipo(range.Cells[i, j].Value2.ToString())
+                    : 4;
+                data.ClasseCustoId =
+                    range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                        ? Select.ClasseCusto(range.Cells[i, j].Value2.ToString())
+                        : 9;
+                data.CategoriaId =
+                    range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                        ? Select.Categoria(range.Cells[i, j].Value2.ToString())
                         : 12;
-                    data.GrupoRateioId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? Select.GrupoRateio(range.Cells[i, j].Value2.ToString())
-                        : 18;
-                    data.PesoLiquido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? (float) range.Cells[i, j].Value2
-                        : 0;
-                    data.Ativo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? Select.Status(range.Cells[i, j].Value2.ToString())
-                        : false;
-                    data.Ipi = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? (float) range.Cells[i, j].Value2
-                        : 0;
-                    data.QtdUnid = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? (int) range.Cells[i, j].Value2
-                        : 0;
-                    data.DominioId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? Select.Dominio(range.Cells[i, j].Value2.ToString())
-                        : 1;
-                    data.TipoProdId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? Select.TipoProducao(range.Cells[i, j].Value2.ToString())
-                        : 3;
-                    data.RefAuxiliarProduto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                        ? range.Cells[i, j].Value2.ToString()
-                        : "--";
-                    data.QtUnPorUnArmz = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                    data.MedidaFitaId = 32;
-                    data.PcpId = 3;
+                data.FamiliaId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? Select.Familia(range.Cells[i, j].Value2.ToString())
+                    : 15;
+                data.LinhaId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? Select.Linha(range.Cells[i, j].Value2.ToString())
+                    : 12;
+                data.GrupoRateioId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? Select.GrupoRateio(range.Cells[i, j].Value2.ToString())
+                    : 18;
+                data.PesoLiquido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? (float) range.Cells[i, j].Value2
+                    : 0;
+                data.Ativo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? Select.Status(range.Cells[i, j].Value2.ToString())
+                    : false;
+                data.Ipi = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? (float) range.Cells[i, j].Value2
+                    : 0;
+                data.QtdUnid = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? (int) range.Cells[i, j].Value2
+                    : 0;
+                data.DominioId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? Select.Dominio(range.Cells[i, j].Value2.ToString())
+                    : 1;
+                data.TipoProdId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? Select.TipoProducao(range.Cells[i, j].Value2.ToString())
+                    : 3;
+                data.RefAuxiliarProduto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? range.Cells[i, j].Value2.ToString()
+                    : "--";
+                data.QtUnPorUnArmz = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null 
+                    ? (int)range.Cells[i, j].Value2 
+                    : 0;
+                data.MedidaFitaId = 32;
+                data.PcpId = 3;
 
-                    db.Produtos.Add(data);
+                j = 40;
+
+                data.Acoes = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? range.Cells[i, j].Value2.ToString()
+                    : "--";
+                data.EventosAgVendasHistorico = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? (int)range.Cells[i, j].Value2
+                    : 0;
+                data.Acao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? range.Cells[i, j].Value2.ToString()
+                    : "--";
+                data.Codigo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                    ? range.Cells[i, j].Value2.ToString()
+                    : "999999";
+
+
+                db.Produtos.Add(data);
                     db.SaveChanges();
                     Console.WriteLine(i);
             }
@@ -148,7 +166,7 @@ namespace XlToDb
 
                     data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null
                         ? Select.Produto(range.Cells[i, 1].Value2.ToString())
-                        : 20830;
+                        : 24400;
                     data.UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null
                         ? Select.Unidade(range.Cells[i, 3].Value2.ToString())
                         : 8;

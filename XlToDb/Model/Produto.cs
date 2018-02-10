@@ -153,6 +153,7 @@ namespace XlToDb.Model
         public int CustoDir { get; set; }
 
         [Display(Name = "Relação MOD / Custo Dir")]
+        [DisplayFormat(DataFormatString = "{0:P0}")]
         public float RelModCstDir { get; set; }
 
         [Display(Name = "% mats etapa final")]
@@ -248,5 +249,20 @@ namespace XlToDb.Model
         public int MedidaFitaId { get; set; }
 
         public MedidaFita MedidaFita { get; set; }
+
+        [StringLength(128)]
+        [Display(Name = "Ações")]
+        public string Acoes { get; set; }
+
+        [Display(Name = "Eventos AGVendas Histórico")]
+        public int EventosAgVendasHistorico { get; set; }
+
+        [StringLength(128)]
+        [Display(Name = "Ação")]
+        public string Acao { get; set; }
+
+        [StringLength(10)]
+        [Display(Name = "Código 2")]
+        public string Codigo { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace XlToDb
     {
         public static int Unidade(string celula)
         {
-            var comp = celula.ToLower();
+            var comp = celula.ToLower().Trim();
 
             if (comp == "cx" || comp == "caixa") return 1;
             if (comp == "pc" || comp == "pç" || comp == "peça" || comp == "peca" || comp == "pc ") return 2;
@@ -26,7 +26,7 @@ namespace XlToDb
         public static int Tipo(string celula)
         {
             celula = $"{celula} ";
-            var comp = celula.Substring(0, 1).ToLower();
+            var comp = celula.Substring(0, 1).ToLower().Trim();
 
             if (comp == "a") return 1;
             if (comp == "b") return 2;
@@ -183,7 +183,7 @@ namespace XlToDb
         {
             var db = new EntityContext();
             var resposta = db.Produtos.FirstOrDefault(p => p.Apelido == celula);
-            if (resposta == null) return 20830;
+            if (resposta == null) return 24400;
             return resposta.Id;
         }
 
