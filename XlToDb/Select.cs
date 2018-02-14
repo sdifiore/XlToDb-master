@@ -183,7 +183,7 @@ namespace XlToDb
         {
             var db = new EntityContext();
             var resposta = db.Produtos.FirstOrDefault(p => p.Apelido == celula);
-            if (resposta == null) return 24400;
+            if (resposta == null) return 26470;
             return resposta.Id;
         }
 
@@ -278,7 +278,7 @@ namespace XlToDb
             var db = new EntityContext();
             var insumo = db.Insumos.SingleOrDefault(p => p.Apelido == celula);
             var result = insumo == null
-                ? 3063
+                ? 6229
                 : insumo.InsumoId;
 
             return result;

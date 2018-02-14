@@ -17,7 +17,7 @@ namespace XlToDb
             //xl.Cotacao();
             //xl.Alteracao();
             //xl.UpdateTipo();
-            xl.Insumo();
+            //xl.Insumo();
             //xl.EncapTubos();
             //xl.AjusteProdutos();
             //xl.PadraoFixo();
@@ -45,6 +45,8 @@ namespace XlToDb
             //xl.SetLinhaInsumo();
             //xl.SetProductUnity();
             //xl.Estrutura();
+            //xl.PlanejMod();
+            xl.Graxas();
         }
     }
 }

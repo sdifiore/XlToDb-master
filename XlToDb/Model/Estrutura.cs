@@ -73,7 +73,7 @@ namespace XlToDb.Model
         public float CustoIndividual { get; set; }
 
         [Display(Name = "Qtd por  Unidade")]
-        public int QtdUndd { get; set; }
+        public float QtdUndd { get; set; }
 
         [StringLength(16)]
         [Display(Name = "Ref Auxiliar Produto")]

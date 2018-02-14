@@ -64,7 +64,7 @@ namespace XlToDb.Model
         public float Ipi { get; set; }
 
         [Display(Name = "Qt/un")]
-        public int QtdUnid { get; set; }
+        public float QtdUnid { get; set; }
 
         [Display(Name = "Domínio")]
         public int DominioId { get; set; }
@@ -75,11 +75,6 @@ namespace XlToDb.Model
         public int TipoProdId { get; set; }
 
         public virtual TipoProducao TipoProd { get; set; }
-
-        [Display(Name = "PCP")]             // Removido por Marcelo em Janeiro -2018. Mantido para uso eventual
-        public int PcpId { get; set; }
-
-        public Pcp Pcp { get; set; }
 
         [StringLength(16)]
         [Display(Name = "Ref Auxiliar Produto")]

@@ -7,11 +7,13 @@ namespace XlToDb.Model
     {
         public int AjusteId { get; set; }
 
+        [StringLength(6)]
         [Display(Name = "De")]
-        [ForeignKey("Origem")]
-        public int OrigemId { get; set; }
+        public string CodigoOriginal { get; set; }
 
-        public Produto Origem { get; set; }
+        [StringLength(128)]
+        [Display(Name = "Descrição")]
+        public string DescricaoOriginal { get; set; }
 
         [Display(Name = "Unidade")]
         public int UnidadeDeId { get; set; }
@@ -22,12 +24,12 @@ namespace XlToDb.Model
         [ForeignKey("Atual")]
         public int AtualId { get; set; }
 
+        public Produto Atual { get; set; }
+
         [Display(Name = "Unidade")]
         public int UnidadeParaId { get; set; }
 
         public Unidade UnidadePara { get; set; }
-
-        public Produto Atual { get; set; }
 
         public float Fator { get; set; }
 

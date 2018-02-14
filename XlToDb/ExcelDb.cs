@@ -63,7 +63,7 @@ namespace XlToDb
                     ? (float) range.Cells[i, j].Value2
                     : 0;
                 data.QtdUnid = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                    ? (int) range.Cells[i, j].Value2
+                    ? (float) range.Cells[i, j].Value2
                     : 0;
                 data.DominioId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
                     ? Select.Dominio(range.Cells[i, j].Value2.ToString())
@@ -78,7 +78,6 @@ namespace XlToDb
                     ? (int)range.Cells[i, j].Value2 
                     : 0;
                 data.MedidaFitaId = 32;
-                data.PcpId = 3;
 
                 j = 40;
 
@@ -166,7 +165,7 @@ namespace XlToDb
 
                     data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null
                         ? Select.Produto(range.Cells[i, 1].Value2.ToString())
-                        : 24400;
+                        : 26470;
                     data.UnidadeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null
                         ? Select.Unidade(range.Cells[i, 3].Value2.ToString())
                         : 8;
@@ -498,21 +497,36 @@ namespace XlToDb
 
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Alteracao);
-            Excel._Worksheet worksheet = workbook.Sheets[7];
+            Excel._Worksheet worksheet = workbook.Sheets[6];
             Excel.Range range = worksheet.UsedRange;
 
-            for (int i = 2; i < 122; i++)
+            for (int i = 2; i < 275; i++)
             {
-                var data = new Ajuste
-                {
-                    OrigemId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 16895,
-                    UnidadeDeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) : 8,
-                    AtualId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? Select.Produto(range.Cells[i, 4].Value2.ToString()) : 16895,
-                    UnidadeParaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? Select.Unidade(range.Cells[i, 6].Value2.ToString()) : 8,
-                    Fator = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null ? (float)range.Cells[i, 7].Value2 : 0,
-                    TipoAlteracaoId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null ? Select.TipoAlteracao(range.Cells[i, 8].Value2.ToString()) : 4,
-                    Medida = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null ? (float)range.Cells[i, 9].Value2 : 0
-                };
+                var data = new Ajuste();
+                data.CodigoOriginal = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null
+                    ? range.Cells[i, 1].Value2.ToString()
+                    : "999999";
+                data.DescricaoOriginal = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null
+                    ? range.Cells[i, 2].Value2.ToString()
+                    : "--";
+                data.UnidadeDeId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null 
+                    ? Select.Unidade(range.Cells[i, 3].Value2.ToString()) 
+                    : 8;
+                data.AtualId = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null 
+                    ? Select.Produto(range.Cells[i, 4].Value2.ToString()) 
+                    : 26470;
+                data.UnidadeParaId = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null
+                    ? Select.Unidade(range.Cells[i, 6].Value2.ToString())
+                    : 8;
+                data.Fator = range.Cells[i, 7] != null && range.Cells[i, 7].Value2 != null 
+                    ? (float)range.Cells[i, 7].Value2 
+                    : 0;
+                data.TipoAlteracaoId = range.Cells[i, 8] != null && range.Cells[i, 8].Value2 != null 
+                    ? Select.TipoAlteracao(range.Cells[i, 8].Value2.ToString()) 
+                    : 4;
+                data.Medida = range.Cells[i, 9] != null && range.Cells[i, 9].Value2 != null 
+                    ? (float)range.Cells[i, 9].Value2 
+                    : 0;
 
                 db.Ajustes.Add(data);
                 db.SaveChanges();
@@ -553,7 +567,7 @@ namespace XlToDb
                 int j = 2;
                 var data = new EncapTubo();
 
-                data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 4642;
+                data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 26470;
                 data.UnidadeId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Unidade(range.Cells[i, j].Value2.ToString()) : 8;
                 data.DextRevest = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                 data.DintRevest = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
@@ -585,7 +599,7 @@ namespace XlToDb
 
                 data.Apelido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "999999";
                 data.Descricao = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? range.Cells[i, 2].Value2.ToString() : "--";
-                data.EmbalagemId = range.Cells[i, 3] != null && range.Cells[i, 3].Value2 != null ? Select.Embalagem(range.Cells[i, 3].Value2.ToString()) : 9;
+                data.EmbalagemId = 18;
                 data.Peso = range.Cells[i, 4] != null && range.Cells[i, 4].Value2 != null ? (float)range.Cells[i, 4].Value2 : 0;
                 data.PctSilicone = range.Cells[i, 5] != null && range.Cells[i, 5].Value2 != null ? (float)range.Cells[i, 5].Value2 : 0;
                 data.PctSilica = range.Cells[i, 6] != null && range.Cells[i, 6].Value2 != null ? (float)range.Cells[i, 6].Value2 : 0;
@@ -944,14 +958,14 @@ namespace XlToDb
             var db = new EntityContext();
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook workbook = xlApp.Workbooks.Open(Files.DfxProdRev);
-            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel._Worksheet worksheet = workbook.Sheets[4];
             Excel.Range range = worksheet.UsedRange;
 
             for (int i = 2; i < 15; i++)
             {
                 int j = 3;
                 var data = new DfxProdRev();
-                data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 16895;
+                data.ProdutoId = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? Select.Produto(range.Cells[i, 1].Value2.ToString()) : 26470;
                 data.UnidadeId = 1;
                 data.QtdUnidade = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
                 data.QtdCompra = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
@@ -1059,7 +1073,7 @@ namespace XlToDb
                 var data = new PlanejCompra();
                 int j = 4;
 
-                data.InsumoId = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? Select.Insumo(range.Cells[i, 2].Value2.ToString()) : 3063;
+                data.InsumoId = range.Cells[i, 2] != null && range.Cells[i, 2].Value2 != null ? Select.Insumo(range.Cells[i, 2].Value2.ToString()) : 6229;
                 data.SomaDe1 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                 data.SomaDe2 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                 data.SomaDe3 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
