@@ -34,7 +34,7 @@ namespace XlToDb
             //xl.PlanejCompra();
             //xl.PlanejNecessid();
             //xl.PlanejVendas();
-            //xl.FatHistorico();
+            xl.FatHistorico();
             //xl.AnoPlanejVendas();
             //xl.VarsPlanejVendas();
             //xl.VarPvPlanejVendas();
@@ -46,7 +46,7 @@ namespace XlToDb
             //xl.SetProductUnity();
             //xl.Estrutura();
             //xl.PlanejMod();
-            xl.Graxas();
+            //xl.Graxas();
         }
     }
 }

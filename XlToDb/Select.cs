@@ -373,5 +373,14 @@ namespace XlToDb
 
             return result;
         }
+
+        public static float QuantAjustada(string celula)
+        {
+            float result;
+
+            if (!float.TryParse(celula, out result)) result = 0;
+
+            return result;
+        }
     }
 }

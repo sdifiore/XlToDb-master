@@ -122,6 +122,12 @@ namespace XlToDb
         [Display(Name = "Natur Cli")]
         public string NaturCli { get; set; }
 
+        [Display(Name = "Unid Ajustada")]   // dac jan/2018
+        public int UnidAjustadaId { get; set; }
+
+        [Display(Name = "Unid Ajustada")]
+        public Unidade UnidAjustada { get; set; }
+
         [Display(Name = "Peso Produto")]
         public float PesoProduto { get; set; }
 
