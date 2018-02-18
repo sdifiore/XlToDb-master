@@ -15,6 +15,7 @@ namespace XlToDb.Model
         public DbSet<CondicaoPreco> CondicoesPrecos { get; set; }
         public DbSet<Cotacao> Cotacoes { get; set; }
         public DbSet<CuboEstoque> CubosEstoque { get; set; }
+        public DbSet<CuboTrabalhado> CubosTrabalhados { get; set; }
         public DbSet<DfxProdRev> DfxProdRevs { get; set; }
         public DbSet<Embal> Embals { get; set; }
         public DbSet<Embalagem> Embalagens { get; set; }
@@ -63,6 +64,8 @@ namespace XlToDb.Model
         public DbSet<PrensaPreForma> PrensasPreForma { get; set; }
         public DbSet<PadraoFixo> PadroesFixos { get; set; }
         public DbSet<AjusteProduto> AjusteProdutos { get; set; }
+        public DbSet<Uf> Ufs { get; set; }
+        public DbSet<Vendedor> Vendedores { get; set; }
 
 
 

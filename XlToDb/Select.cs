@@ -382,5 +382,16 @@ namespace XlToDb
 
             return result;
         }
+
+        public static string Uf(string uf)
+        {
+            var db = new EntityContext();
+            var temp = db.Ufs.SingleOrDefault(u => u.Nome == uf);
+            var result = temp == null
+                ? ""
+                : temp.Sigla;
+
+            return result;
+        }
     }
 }

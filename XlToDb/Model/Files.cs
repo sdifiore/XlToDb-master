@@ -38,5 +38,8 @@ namespace XlToDb.Model
         public const string PlanejNecessid = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_5.Compras.xlsm";
         public const string FatHistorico = @"C:\Users\difio\OneDrive\Documents\Visao\sistema plastifluor\Sistema Planilhas Estrutura\Custos_3.PlanejVendas.xlsm";
         public const string PlanejVendas = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_3.PlanejVendas.xlsm";
+        public const string ReadText = @"C:\Users\difio\Documents\Visao\Custos_1.Estrutura.csv";
+        public const string cuboTeste = @"C:\Users\difio\OneDrive\Documents\Visao\sistema plastifluor\testes\cubo trabalhado.csv";
+        public const string vendedor = @"C:\Users\difio\OneDrive\Documents\Visao\sistema plastifluor\Sistema Planilhas Estrutura\vendedor.csv";
     }
 }
