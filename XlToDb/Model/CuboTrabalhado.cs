@@ -222,7 +222,11 @@ namespace XlToDb.Model
 
         public float VlIcms { get; set; }
 
-        public string VlCom { get; set; }
+        public float VlCom { get; set; }
+
+        [StringLength(24)]
+        [Display(Name = "CNPJ")]
+        public string Cnpj { get; set; }
 
         [StringLength(256)]
         [Display(Name = "Cod - Prod Original")]

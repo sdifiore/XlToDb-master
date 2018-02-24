@@ -85,6 +85,51 @@ namespace XlToDb
             return result.LinhaId;
         }
 
+        public static int CategoriaCliente(string celula)
+        {
+            int valor;
+            celula = $"{celula}  ";
+            var db = new EntityContext();
+            var comp = int.TryParse(celula.Substring(0, 2), out valor)
+                ? valor
+                : 0;
+
+            var result = db.CategoriasCliente.SingleOrDefault(c => c.Codigo == comp);
+            if (result == null) return 11;
+
+            return result.Id;
+        }
+
+        public static int Marca(string celula)
+        {
+            var db = new EntityContext();
+
+            var result = db.Marcas.SingleOrDefault(m => m.Descricao == celula);
+            if (result == null) return 4;
+
+            return result.Id;
+        }
+
+        public static int TipoVenda(string celula)
+        {
+            var db = new EntityContext();
+
+            var result = db.TiposVenda.SingleOrDefault(t => t.Tipo == celula);
+            if (result == null) return 3;
+
+            return result.Id;
+        }
+
+        public static int TipoCliente(string celula)
+        {
+            var db = new EntityContext();
+
+            var result = db.TiposCliente.SingleOrDefault(t => t.Nome == celula);
+            if (result == null) return 4;
+
+            return result.Id;
+        }
+
         public static int GrupoRateio(string celula)
         {
             celula = celula.ToLower();
@@ -390,6 +435,63 @@ namespace XlToDb
             var result = temp == null
                 ? ""
                 : temp.Sigla;
+
+            return result;
+        }
+
+        public static bool Faturado(string celula)
+        {
+            bool result = celula == "Faturado"
+                ? true
+                : false;
+
+            return result;
+        }
+
+        public static bool Juridico(string celula)
+        {
+            bool result = celula == "J"
+                ? true
+                : false;
+
+            return result;
+        }
+
+        public static bool TemPeso(string celula)
+        {
+            bool result = celula == "com peso"
+                ? true
+                : false;
+
+            return result;
+        }
+
+        public static float ParseFloat(string celula)
+        {
+            float valor;
+            float result = float.TryParse(celula, out valor)
+                ? valor
+                : 0;
+
+            return result;
+        }
+
+        public static int ParseInt(string celula)
+        {
+            int valor;
+            int result = int.TryParse(celula, out valor)
+                ? valor
+                : 0;
+
+            return result;
+        }
+
+        public static DateTime ParseDate(string celula)
+        {
+            DateTime valor;
+            DateTime result = DateTime.TryParse(celula, out valor)
+                ? valor
+                : DateTime.Parse("01/01/01");
 
             return result;
         }

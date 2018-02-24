@@ -11,6 +11,7 @@ namespace XlToDb.Model
 
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Base> Bases { get; set; }
+        public DbSet<CategoriaCliente> CategoriasCliente { get; set; }
         public DbSet<ClasseCusto> ClassesCusto { get; set; }
         public DbSet<CondicaoPreco> CondicoesPrecos { get; set; }
         public DbSet<Cotacao> Cotacoes { get; set; }
@@ -27,6 +28,7 @@ namespace XlToDb.Model
         public DbSet<LogData> LogData { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Tipo> Tipos { get; set; }
+        public DbSet<TipoCliente> TiposCliente { get; set; }
         public DbSet<Unidade> Unidades { get; set; }
         public DbSet<Estrutura> Estruturas { get; set; }
         public DbSet<Serie> Series { get; set; }
@@ -36,6 +38,7 @@ namespace XlToDb.Model
         public DbSet<Carga> Cargas { get; set; }
         public DbSet<CustoCargoDireto> CustoCargoDiretos { get; set; }
         public DbSet<CustoFolha> CustoFolhas { get; set; }
+        public DbSet<Marca> Marcas { get; set; }
         public DbSet<MedidaFita> MedidaFitas { get; set; }
         public DbSet<QtdEmbalagem> QtdEmbalagems { get; set; }
         public DbSet<Finalidade> Finalidades { get; set; }
@@ -54,6 +57,7 @@ namespace XlToDb.Model
         public DbSet<ProcTubo> ProcTubos { get; set; }
         public DbSet<Ajuste> Ajustes { get; set; }
         public DbSet<TipoAlteracao> TiposAlteracao { get; set; }
+        public DbSet<TipoVenda> TiposVenda { get; set; }
         public DbSet<EncapTubo> EncapTubos { get; set; }
         public DbSet<Graxa> Graxas { get; set; }
         public DbSet<Resina> Resinas { get; set; }

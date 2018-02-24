@@ -26,7 +26,7 @@ namespace XlToDb.Model
         public const string PreForma = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_6.PPV Tubos.xlsm";
         public const string Resina = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Resinas PTFE.xlsx";
         public const string ProcTubo = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_6.PPV Tubos.xlsm";
-        public const string Cargos = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_1.Estrutura.xlsm";
+        public const string Cargos = @"C:\Users\difio\OneDrive\Documents\Visao\sistema plastifluor\Sistema Planilhas Estrutura\Custos_1.Estrutura.xlsm";
         public const string DespFixa = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_2.Orçamento.xlsm";
         public const string PrecoNacional = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_4.PV.xlsm";
         public const string PrecoExportacao = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_4.PV.xlsm";
@@ -39,7 +39,7 @@ namespace XlToDb.Model
         public const string FatHistorico = @"C:\Users\difio\OneDrive\Documents\Visao\sistema plastifluor\Sistema Planilhas Estrutura\Custos_3.PlanejVendas.xlsm";
         public const string PlanejVendas = @"C:\Users\difio\Documents\Visao\Dropbox\Plastifluor\Sistema\custos\Custos_3.PlanejVendas.xlsm";
         public const string ReadText = @"C:\Users\difio\Documents\Visao\Custos_1.Estrutura.csv";
-        public const string cuboTeste = @"C:\Users\difio\OneDrive\Documents\Visao\sistema plastifluor\testes\cubo trabalhado.csv";
+        public const string cuboHistorico = @"C:\Users\difio\OneDrive\Documents\Visao\sistema plastifluor\Sistema Planilhas Estrutura\AGVendas_Histórico_2005 em diante.csv";
         public const string vendedor = @"C:\Users\difio\OneDrive\Documents\Visao\sistema plastifluor\Sistema Planilhas Estrutura\vendedor.csv";
     }
 }

@@ -398,7 +398,6 @@ namespace XlToDb
             {
                 for (int i = 2; i < range.Rows.Count + 1; i++)
                 {
-                    int j = 0;
                     var data = new Cotacao
                     {
                         DateTime = DateTime.Now,
@@ -754,38 +753,40 @@ namespace XlToDb
 
         public void CustoCargosDiretos()
         {
-            var db = new EntityContext();
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Cargos);
-            Excel._Worksheet worksheet = workbook.Sheets[9];
-            Excel.Range range = worksheet.UsedRange;
-
-            for (int i = 4; i < 15; i++)
+            using (var db = new EntityContext())
             {
-                int j = 1;
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook workbook = xlApp.Workbooks.Open(Files.Cargos);
+                Excel._Worksheet worksheet = workbook.Sheets[13];
+                Excel.Range range = worksheet.UsedRange;
 
-                var data = new CustoCargoDireto
+                for (int i = 4; i < 15; i++)
                 {
-                    SetorId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Setor(range.Cells[i, j].Value2.ToString()) : 22,
-                    Operadores = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0,
-                    MoDireta = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    CodigoLiderApoio = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--",
-                    MoDiretaLiderApoio = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    HorasModOperadores = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    HorasModTotal = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    CustoUnitario = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    RateioSetor20 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    RateioSetor40 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    RateioSetor50 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    RateioSetor60 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    SomaIndiretos = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    SomaDiretoIndireto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
-                    RateioCustoUnitario = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0
-                };
+                    int j = 1;
 
-                db.CustoCargoDiretos.Add(data);
-                db.SaveChanges();
-                Console.WriteLine(i);
+                    var data = new CustoCargoDireto
+                    {
+                        SetorId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Setor(range.Cells[i, j].Value2.ToString()) : 22,
+                        Operadores = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0,
+                        MoDireta = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        CodigoLiderApoio = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--",
+                        MoDiretaLiderApoio = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        HorasModOperadores = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        HorasModTotal = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        CustoUnitario = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        RateioSetor20 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        RateioSetor40 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        RateioSetor50 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        RateioSetor60 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        SomaIndiretos = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        SomaDiretoIndireto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0,
+                        RateioCustoUnitario = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0
+                    };
+
+                    db.CustoCargoDiretos.Add(data);
+                    db.SaveChanges();
+                    Console.WriteLine(i); 
+                }
             }
         }
 
@@ -1119,104 +1120,108 @@ namespace XlToDb
 
         public void PlanejVendas()
         {
-            var db = new EntityContext();
-            var produtos = db.Produtos.ToList();
-            int i = 0;
-
-            foreach (var produto in produtos)
+            using (var db = new EntityContext())
             {
-                var data = new PlanejVenda
-                {
-                    ProdutoId = produto.Id,
-                    RefAno = DateTime.Now
-                };
+                var produtos = db.Produtos.ToList();
+                int i = 0;
 
-                db.PlanejVendas.Add(data);
+                foreach (var produto in produtos)
+                {
+                    var data = new PlanejVenda
+                    {
+                        ProdutoId = produto.Id,
+                        RefAno = DateTime.Parse("15/12/2017")
+                    };
+
+                    db.PlanejVendas.Add(data);
+                    Console.WriteLine(i++); 
+                }
                 db.SaveChanges();
-                Console.WriteLine(i++);
             }
         }
 
         public void FatHistorico()
         {
-            var db = new EntityContext();
-            var produtos = db.FatHistoricos.ToList();
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.FatHistorico);
-            Excel._Worksheet worksheet = workbook.Sheets[2];
-            Excel.Range range = worksheet.UsedRange;
-
-            for (int i = 21918; i < 21980; i++)
+            using (var db = new EntityContext())
             {
-                int j = 3;
-                var data = new FatHistorico();
-                data.NumeroPedido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "--";
-                data.DataPedido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                    ? Function.ExcelToDate(range.Cells[i, j].Value2.ToString())
-                    : DateTime.Parse("01/01/2018");
-                data.Cliente = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.Estado = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.Cidade = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.Regiao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.ProdutoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Produto(range.Cells[i, j].Value2.ToString()) : 26470;
-                j = 14;
-                data.Vendedor = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.FormaPagamento = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.DataValidade = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                    ? Function.ExcelToDate(range.Cells[i, j].Value2.ToString())
-                    : DateTime.Parse("01/01/2018");
-                data.TipoVenda = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.DataFaturamento = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
-                    ? Function.ExcelToDate(range.Cells[i, j].Value2.ToString())
-                    : DateTime.Parse("01/01/2018");
-                data.NotaFiscal = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)Select.QuantAjustada(range.Cells[i, j].Value2.ToString()) : 0;
-                data.Quantidade = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.ValorUnitario = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.ValorMercadoria = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.ValorIpi = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.ValorSubstTributaria = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.PrazoMedioRecebimento = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                //data.RecBruta = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0; // **** Removido dac Jan/2018
-                data.FaturBruto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.MesCadastro = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.AnoMesFatura = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.Situacao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.MesEntrega = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.ClientePedido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.ClientePedido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.ProdutoAjustadoId = range.Cells[i, 34] != null && range.Cells[i, 34].Value2 != null ? Select.Produto(range.Cells[i, 34].Value2.ToString()) : 26470;
-                j = 35;
-                data.UnidAjustadaId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Unidade(range.Cells[i, j].Value2.ToString()) : 8;
-                data.QuantAjustada = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.QuantAjustada(range.Cells[i, j].Value2.ToString()) : 0;
-                data.PesoProduto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ?  Select.QuantAjustada(range.Cells[i, j].Value2) : 0;
-                data.NaturCli = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "-";
-                data.TipoCliente = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.CategoriaCliente = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.SegmentoCliente = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.Grupo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
-                data.PrazoEntrega = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
-                data.TxDolar = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.FatBrutoUsd = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.PrecoIndividual = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.ReceitaLiquida = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.Comissao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.Frete = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.CstFinBobranca = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ?  Select.QuantAjustada(range.Cells[i, j].Value2.ToString()) : 0;
-                j++;
-                data.QuantAjustada = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.Icms = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.PrazoFatur = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                data.HorasMod = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                //data.ComGvComacs = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
-                //data.DescrProdAjustado = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "-";
-                //data.ProdCategoriaAjustado = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "-";
-                j++;
-                j++;
-                data.ProdCategoriaAjustado = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                var produtos = db.FatHistoricos.ToList();
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook workbook = xlApp.Workbooks.Open(Files.FatHistorico);
+                Excel._Worksheet worksheet = workbook.Sheets[2];
+                Excel.Range range = worksheet.UsedRange;
 
-                db.FatHistoricos.Add(data);
+                for (int i = 2; i < 21980; i++)
+                {
+                    int j = 3;
+                    var data = new FatHistorico();
+                    data.NumeroPedido = range.Cells[i, 1] != null && range.Cells[i, 1].Value2 != null ? range.Cells[i, 1].Value2.ToString() : "--";
+                    data.DataPedido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                        ? Function.ExcelToDate(range.Cells[i, j].Value2.ToString())
+                        : DateTime.Parse("01/01/2018");
+                    data.Cliente = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.Estado = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.Cidade = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.Regiao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.ProdutoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Produto(range.Cells[i, j].Value2.ToString()) : 26470;
+                    j = 14;
+                    data.Vendedor = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.FormaPagamento = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.DataValidade = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                        ? Function.ExcelToDate(range.Cells[i, j].Value2.ToString())
+                        : DateTime.Parse("01/01/2018");
+                    data.TipoVenda = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.DataFaturamento = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null
+                        ? Function.ExcelToDate(range.Cells[i, j].Value2.ToString())
+                        : DateTime.Parse("01/01/2018");
+                    data.NotaFiscal = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)Select.QuantAjustada(range.Cells[i, j].Value2.ToString()) : 0;
+                    data.Quantidade = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.ValorUnitario = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.ValorMercadoria = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.ValorIpi = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.ValorSubstTributaria = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.PrazoMedioRecebimento = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                    //data.RecBruta = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0; // **** Removido dac Jan/2018
+                    data.FaturBruto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.MesCadastro = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.AnoMesFatura = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.Situacao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.MesEntrega = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.ClientePedido = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.ProdutoAjustadoId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Produto(range.Cells[i, j].Value2.ToString()) : 26470;
+                    j = 34;
+                    data.UnidAjustadaId = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.Unidade(range.Cells[i, j].Value2.ToString()) : 8;
+                    data.QuantAjustada = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.QuantAjustada(range.Cells[i, j].Value2.ToString()) : 0;
+                    data.PesoProduto = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.QuantAjustada(range.Cells[i, j].Value2.ToString()) : 0;
+                    data.NaturCli = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "-";
+                    data.TipoCliente = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.CategoriaCliente = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.SegmentoCliente = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.Grupo = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+                    data.PrazoEntrega = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                    data.TxDolar = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.FatBrutoUsd = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.PrecoIndividual = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.ReceitaLiquida = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.Comissao = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.Frete = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.CstFinBobranca = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.QuantAjustada(range.Cells[i, j].Value2.ToString()) : 0;
+                    j++;
+                    data.QuantAjustada = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.Icms = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.PrazoFatur = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.HorasMod = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    //data.ComGvComacs = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    //data.DescrProdAjustado = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "-";
+                    //data.ProdCategoriaAjustado = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "-";
+                    j++;
+                    j++;
+                    data.ProdCategoriaAjustado = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? range.Cells[i, j].Value2.ToString() : "--";
+
+                    db.FatHistoricos.Add(data);
+                    Console.WriteLine(i); 
+                }
+
                 db.SaveChanges();
-                Console.WriteLine(i);
             }
         }
 

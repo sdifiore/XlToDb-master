@@ -6,7 +6,8 @@ namespace XlToDb
     {
         static void Main(string[] args)
         {
-            Csv2Db.Vendedor();
+            var xl = new ExcelDb();
+            xl.PlanejVendas();
         }
     }
 }
