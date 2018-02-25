@@ -205,5 +205,8 @@ namespace XlToDb
         [StringLength(512)]
         [Display(Name = "Prod Categoria Ajustado")]
         public string ProdCategoriaAjustado { get; set; }
+
+        [Display(Name = "Qt Unid Individual")]
+        public float QtUnidIndividual { get; set; }
     }
 }

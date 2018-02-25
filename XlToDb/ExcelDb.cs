@@ -1206,7 +1206,7 @@ namespace XlToDb
                     data.Frete = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                     data.CstFinBobranca = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? Select.QuantAjustada(range.Cells[i, j].Value2.ToString()) : 0;
                     j++;
-                    data.QuantAjustada = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
+                    data.QtUnidIndividual = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                     data.Icms = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                     data.PrazoFatur = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
                     data.HorasMod = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (float)range.Cells[i, j].Value2 : 0;
