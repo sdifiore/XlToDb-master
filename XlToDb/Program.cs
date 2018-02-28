@@ -7,7 +7,7 @@ namespace XlToDb
         static void Main(string[] args)
         {
             var xl = new ExcelDb();
-            xl.FatHistorico();
+            xl.PqeCriterioPlanejVendas();
         }
     }
 }

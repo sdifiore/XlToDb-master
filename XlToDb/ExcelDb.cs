@@ -1246,7 +1246,7 @@ namespace XlToDb
             var plan = db.PlanejVendas;
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PlanejVendas);
-            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel._Worksheet worksheet = workbook.Sheets[5];
             Excel.Range range = worksheet.UsedRange;
 
             for (int i = 6; i < 269; i++)
@@ -1266,6 +1266,39 @@ namespace XlToDb
             db.SaveChanges();
         }
 
+        public void PlanejVendasVpVarPv()
+        {
+            var db = new EntityContext();
+            var plan = db.PlanejVendas;
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PlanejVendas);
+            Excel._Worksheet worksheet = workbook.Sheets[5];
+            Excel.Range range = worksheet.UsedRange;
+
+            for (int i = 6; i < 269; i++)
+            {
+                int j = 92;
+                string apelido = range.Cells[i, 5].Value2.ToString();
+                var planej = plan.SingleOrDefault(p => p.Produto.Apelido == apelido);
+                planej.PvvpvaVarPvAnoMenos12 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos11 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos10 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos9 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos8 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos7 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos6 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos5 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos4 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos3 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAnoMenos2 = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+                planej.PvvpvaVarPvAno = range.Cells[i, ++j] != null && range.Cells[i, j].Value2 != null ? (int)range.Cells[i, j].Value2 : 0;
+
+                Console.WriteLine(i);
+            }
+
+            db.SaveChanges();
+        }
+
         public void VarPvPlanejVendas()
         {
             var db = new EntityContext();
@@ -1274,8 +1307,9 @@ namespace XlToDb
 
             foreach (var planej in plan)
             {
+
                 planej.PvvpvaVarPvAnoMenos12 = 0;
-                planej.PvvpvaVarPvAnoMenos11 = 0.15f;
+                planej.PvvpvaVarPvAnoMenos12 = 0.15f;
                 planej.PvvpvaVarPvAnoMenos10 = 0.15f;
                 planej.PvvpvaVarPvAnoMenos9 = 0.15f;
                 planej.PvvpvaVarPvAnoMenos8 = 0.15f;
@@ -1299,7 +1333,7 @@ namespace XlToDb
             var plan = db.PlanejVendas;
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PlanejVendas);
-            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel._Worksheet worksheet = workbook.Sheets[5];
             Excel.Range range = worksheet.UsedRange;
 
             for (int i = 6; i < 269; i++)
