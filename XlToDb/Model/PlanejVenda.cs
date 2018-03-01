@@ -997,6 +997,18 @@ namespace XlToDb.Models
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public float McCustoDirMatModTotal { get; set; }
 
+        [Display(Name = "Custo MOD Total Ajustado")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float McCustoModTotalAjustado { get; set; }
+
+        [Display(Name = "Custo Dir Mat Total")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float McCustoDirMaTotal { get; set; }
+
+        [Display(Name = "MC Direta Ajustada Total")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float McDiretaAjustadaTotal { get; set; }
+
         [Display(Name = "Custo Fixo Fábrica Total")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public float McCustoFixoFabricaTotal { get; set; }
