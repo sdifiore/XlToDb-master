@@ -1356,7 +1356,7 @@ namespace XlToDb
             var plan = db.PlanejVendas;
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook workbook = xlApp.Workbooks.Open(Files.PlanejVendas);
-            Excel._Worksheet worksheet = workbook.Sheets[3];
+            Excel._Worksheet worksheet = workbook.Sheets[5];
             Excel.Range range = worksheet.UsedRange;
 
             for (int i = 6; i < 269; i++)

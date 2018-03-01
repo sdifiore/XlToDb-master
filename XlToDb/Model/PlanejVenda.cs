@@ -933,6 +933,10 @@ namespace XlToDb.Models
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public float CreCustoDiretoMatModExptRs { get; set; }
 
+        [Display(Name = "M.C. Direta Exp")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
+        public float CreMCDiretaExp { get; set; }
+
         [Display(Name = "Custo Fixo Fab Exp R$")]
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public float CreCustoFixoFabExpRs { get; set; }
